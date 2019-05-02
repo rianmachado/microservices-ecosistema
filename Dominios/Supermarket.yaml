@@ -1,0 +1,126 @@
+swagger: "2.0"
+info:
+  description: "API Utilizada patra expor operações do Supermarket Delivery"
+  version: "1.0.0"
+  title: "Supermarket"
+  contact:
+    email: "rianmachado@gmail.com"
+host: "supermarket.com.br"
+basePath: "/v1"
+tags:
+- name: "clientes"
+  description: "Tudo sobre seus clientes"
+
+schemes:
+- "https"
+- "http"
+paths:
+  /clientes:
+    post:
+      tags:
+      - "clientes"
+      summary: "Criar novo cliente"
+      operationId: "addCliente"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Cliente object necessário para gravar um cliente novo"
+        required: true
+        schema:
+          $ref: "#/definitions/Cliente"
+      responses:
+        405:
+          description: "Invalid input"
+  
+    put:
+      tags:
+      - "clientes"
+      summary: "Atualizar cliente existente"
+      description: ""
+      operationId: "updateCliente"
+      consumes:
+      - "application/json"
+      
+      produces:
+      
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Cliente object necessário para atualizar um cliente existente"
+        required: true
+        schema:
+          $ref: "#/definitions/Cliente"
+      responses:
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Cliente não encontrado"
+        405:
+          description: "Validation exception"
+      
+  /clientes/{clienteId}:
+    get:
+      tags:
+      - "clientes"
+      summary: "Localizar cliente por ID"
+      description: "Recupera um cliente"
+      operationId: "getClienteById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "clienteId"
+        in: "path"
+        description: "ID of pet to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Cliente"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Cliente not found"
+    
+    delete:
+      tags:
+      - "clientes"
+      summary: "Delete um cliente"
+      description: ""
+      operationId: "deleteCliente"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "clienteId"
+        in: "path"
+        description: "Cliente id para deletar"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Cliente not found"  
+  
+definitions:
+  Cliente:
+    type: "object"
+    required:
+    - "name"
+    
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+        example: "Rian"
+      
