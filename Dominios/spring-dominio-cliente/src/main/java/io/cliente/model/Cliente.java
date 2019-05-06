@@ -14,33 +14,33 @@ import io.swagger.annotations.ApiModelProperty;
  * Cliente
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-03-11T00:36:48.442Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-05-02T20:06:16.945Z")
 
 public class Cliente   {
   @JsonProperty("identificador")
-  private Long id = null;
+  private String identificador = null;
 
-  @JsonProperty("nome")
+  @JsonProperty("name")
   private String name = null;
 
-  public Cliente id(Long id) {
-    this.id = id;
+  public Cliente identificador(String identificador) {
+    this.identificador = identificador;
     return this;
   }
 
   /**
-   * Get id
-   * @return id
+   * Get identificador
+   * @return identificador
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "123e4567-e89b-12d3-a456-426655440000", value = "")
 
 
-  public Long getId() {
-    return id;
+  public String getIdentificador() {
+    return identificador;
   }
 
-  public void setId(Long id) {
-    this.id = id;
+  public void setIdentificador(String identificador) {
+    this.identificador = identificador;
   }
 
   public Cliente name(String name) {
@@ -74,13 +74,13 @@ public class Cliente   {
       return false;
     }
     Cliente cliente = (Cliente) o;
-    return Objects.equals(this.id, cliente.id) &&
+    return Objects.equals(this.identificador, cliente.identificador) &&
         Objects.equals(this.name, cliente.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name);
+    return Objects.hash(identificador, name);
   }
 
   @Override
@@ -88,7 +88,7 @@ public class Cliente   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Cliente {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    identificador: ").append(toIndentedString(identificador)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.cliente.model.Cliente;
 import io.swagger.annotations.ApiParam;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-03-11T00:36:48.442Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-05-02T20:06:16.945Z")
 
 @Controller
 public class ClientesApiController implements ClientesApi {
@@ -39,7 +39,7 @@ public class ClientesApiController implements ClientesApi {
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> deleteCliente(@ApiParam(value = "Cliente id para deletar",required=true) @PathVariable("clienteId") Long clienteId) {
+    public ResponseEntity<Void> deleteCliente(@ApiParam(value = "Identificador para localizar cliente a ser deletado",required=true) @PathVariable("clienteId") Long clienteId) {
         String accept = request.getHeader("Accept");
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
@@ -48,7 +48,7 @@ public class ClientesApiController implements ClientesApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<Cliente>(objectMapper.readValue("{  \"name\" : \"Rian Testado\",  \"id\" : 1}", Cliente.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<Cliente>(objectMapper.readValue("{  \"name\" : \"Rian\",  \"identificador\" : \"123e4567-e89b-12d3-a456-426655440000\"}", Cliente.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<Cliente>(HttpStatus.INTERNAL_SERVER_ERROR);
